@@ -247,7 +247,7 @@
   }
 
   body {
-    @apply overscroll-y-none bg-background font-sans text-foreground antialiased;
+    @apply overscroll-y-none bg-background !font-sans text-foreground antialiased;
     font-synthesis-weight: none;
     text-rendering: optimizeLegibility;
   }
@@ -317,7 +317,9 @@
   }
 }
 
-
+body {
+  font-family: var(--font-sans) !important;
+}
 
 .icon-logo {
   stroke: var(--highlight-color);
