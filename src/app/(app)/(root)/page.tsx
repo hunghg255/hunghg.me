@@ -1,4 +1,5 @@
 import { About } from "@/features/profile/components/about";
+import { Certifications } from "@/features/profile/components/certifications";
 import { Experiences } from "@/features/profile/components/experiences";
 import { Overview } from "@/features/profile/components/overview";
 import { ProfileCover } from "@/features/profile/components/profile-cover";
@@ -39,6 +40,9 @@ export default function Page() {
         <Separator /> */}
 
         <Experiences />
+        <Separator />
+
+        <Certifications />
         <Separator />
 
         <Wakatime />

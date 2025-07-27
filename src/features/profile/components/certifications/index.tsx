@@ -1,8 +1,8 @@
 import { CollapsibleList } from "@/components/collapsible-list";
 
-import { CERTIFICATIONS } from "../../data/certifications";
 import { Panel, PanelHeader, PanelTitle } from "../panel";
 import { CertificationItem } from "./certification-item";
+import { CERTIFICATIONS } from "@/features/profile/data/certificates";
 
 export function Certifications() {
   return (
