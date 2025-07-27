@@ -1,0 +1,158 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "ncdai",
+  "homepage": "https://hunghg.me",
+  "items": [
+    {
+      "name": "utils",
+      "type": "registry:lib",
+      "title": "Utility Functions",
+      "author": "ncdai <dai@hunghg.me>",
+      "dependencies": [
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "src/lib/utils.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "use-controllable-state",
+      "type": "registry:hook",
+      "title": "Controllable State Hook",
+      "files": [
+        {
+          "path": "src/hooks/use-layout-effect.tsx",
+          "type": "registry:hook"
+        },
+        {
+          "path": "src/hooks/use-controllable-state.ts",
+          "type": "registry:hook"
+        }
+      ]
+    },
+    {
+      "name": "theme-switcher",
+      "type": "registry:component",
+      "title": "Theme Switcher",
+      "author": "ncdai <dai@hunghg.me>",
+      "description": "A theme switcher component for Next.js apps with next-themes and Tailwind CSS, supporting system, light, and dark modes.",
+      "dependencies": [
+        "next-themes",
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://hunghg.me/r/utils.json"
+      ],
+      "files": [
+        {
+          "path": "src/registry/theme-switcher/theme-switcher.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "docs": "https://hunghg.me/components/theme-switcher-component"
+    },
+    {
+      "name": "flip-sentences",
+      "type": "registry:component",
+      "title": "Flip Sentences",
+      "author": "ncdai <dai@hunghg.me>",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://hunghg.me/r/utils.json"
+      ],
+      "files": [
+        {
+          "path": "src/registry/flip-sentences/flip-sentences.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "apple-hello-effect",
+      "type": "registry:component",
+      "title": "Apple Hello Effect",
+      "author": "ncdai <dai@hunghg.me>",
+      "description": "Create a Xin chào and Hello writing effect inspired by Apple using Motion for React.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://hunghg.me/r/utils.json"
+      ],
+      "files": [
+        {
+          "path": "src/registry/apple-hello-effect/apple-hello-effect.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "docs": "https://hunghg.me/components/writing-effect-inspired-by-apple"
+    },
+    {
+      "name": "wheel-picker",
+      "type": "registry:component",
+      "title": "Wheel Picker",
+      "author": "ncdai <dai@hunghg.me>",
+      "description": "iOS-like wheel picker for React with smooth inertia scrolling and infinite loop support.",
+      "dependencies": [
+        "@ncdai/react-wheel-picker"
+      ],
+      "registryDependencies": [
+        "https://hunghg.me/r/utils.json"
+      ],
+      "files": [
+        {
+          "path": "src/registry/wheel-picker/wheel-picker.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "docs": "https://hunghg.me/components/react-wheel-picker"
+    },
+    {
+      "name": "work-experience",
+      "type": "registry:component",
+      "title": "Work Experience",
+      "author": "ncdai <dai@hunghg.me>",
+      "description": "Displays a list of work experiences with role details and durations.",
+      "dependencies": [
+        "react-markdown",
+        "lucide-react"
+      ],
+      "devDependencies": [
+        "@tailwindcss/typography"
+      ],
+      "registryDependencies": [
+        "https://hunghg.me/r/utils.json",
+        "collapsible",
+        "separator"
+      ],
+      "files": [
+        {
+          "path": "src/registry/work-experience/work-experience.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "cssVars": {
+        "light": {
+          "background": "oklch(1 0 0)",
+          "muted": "oklch(0.967 0.001 286.375)",
+          "muted-foreground": "oklch(0.552 0.016 285.938)",
+          "border": "oklch(0.92 0.004 286.32)"
+        },
+        "dark": {
+          "background": "oklch(0.141 0.005 285.823)",
+          "muted": "oklch(0.274 0.006 286.033)",
+          "muted-foreground": "oklch(0.705 0.015 286.067)",
+          "border": "oklch(0.274 0.006 286.033)"
+        }
+      },
+      "docs": "https://hunghg.me/components/work-experience-component"
+    }
+  ]
+}

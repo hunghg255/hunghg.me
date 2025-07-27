@@ -1,0 +1,760 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@plugin "@tailwindcss/typography";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover-border: var(--popover-border);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-border: var(--border);
+  --color-edge: var(--edge);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-info: var(--info);
+  --color-success: var(--success);
+  --color-destructive: var(--destructive);
+  --color-link: var(--link);
+  --color-code: var(--code);
+  --color-code-foreground: var(--code-foreground);
+  --color-code-number: var(--code-number);
+  --color-code-highlight: var(--code-highlight);
+
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+
+  --shadow-popover: var(--shadow-popover);
+}
+
+@utility no-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@utility link {
+  @apply font-medium underline underline-offset-4;
+}
+
+@utility screen-line-before {
+  @apply relative before:absolute before:top-0 before:-left-[100vw] before:-z-1 before:h-px before:w-[200vw] before:bg-edge;
+}
+
+@utility screen-line-after {
+  @apply relative after:absolute after:bottom-0 after:-left-[100vw] after:-z-1 after:h-px after:w-[200vw] after:bg-edge;
+}
+
+@utility step {
+  counter-increment: step;
+  &::before {
+    @apply mr-2 inline-flex size-7 items-center justify-center rounded-full bg-muted text-center -indent-px text-sm font-medium text-muted-foreground md:absolute md:-mt-0.5 md:-ml-11.5 md:size-8;
+    content: counter(step);
+  }
+}
+
+:root {
+  /* white */
+  --background: oklch(1 0 0);
+
+  /* zinc-950 */
+  --foreground: oklch(0.141 0.005 285.823);
+
+  /* zinc-950 */
+  --primary: oklch(0.141 0.005 285.823);
+
+  /* zinc-50 */
+  --primary-foreground: oklch(0.985 0 0);
+
+  /* zinc-100 */
+  --secondary: oklch(0.967 0.001 286.375);
+
+  /* zinc-950 */
+  --secondary-foreground: oklch(0.141 0.005 285.823);
+
+  /* zinc-100 */
+  --muted: oklch(0.967 0.001 286.375);
+
+  /* zinc-500 */
+  --muted-foreground: oklch(0.552 0.016 285.938);
+
+  /* white */
+  --card: oklch(1 0 0);
+
+  /* zinc-950 */
+  --card-foreground: oklch(0.141 0.005 285.823);
+
+  /* white */
+  --popover: oklch(1 0 0);
+
+  /* zinc-950 */
+  --popover-foreground: oklch(0.141 0.005 285.823);
+
+  --popover-border: color-mix(in oklab, var(--color-black) 15%, transparent);
+
+  /* zinc-100 */
+  --accent: oklch(0.967 0.001 286.375);
+
+  /* zinc-900 */
+  --accent-foreground: oklch(0.21 0.006 285.885);
+
+  /* zinc-200 */
+  --border: oklch(0.92 0.004 286.32);
+
+  /* color-mix */
+  --edge: color-mix(in oklab, var(--border) 64%, var(--background));
+
+  /* zinc-200 */
+  --input: oklch(0.92 0.004 286.32);
+
+  --ring: oklch(0.67 0.17 244.98);
+
+  --info: oklch(0.67 0.17 244.98);
+
+  /* green-500 */
+  --success: oklch(0.723 0.219 149.579);
+
+  /* red-600 */
+  --destructive: oklch(0.577 0.245 27.325);
+
+  /* blue-700 */
+  --link: oklch(0.488 0.243 264.376);
+
+  /* zinc-50 */
+  --code: oklch(0.985 0 0);
+
+  /* zinc-950 */
+  --code-foreground: oklch(0.141 0.005 285.823);
+
+  /* zinc-400 */
+  --code-number: oklch(0.705 0.015 286.067);
+
+  /* zinc-100 */
+  --code-highlight: oklch(0.967 0.001 286.375);
+
+  --shadow-popover: 0 6px 24px rgba(0, 0, 0, 0.25);
+
+  --highlight-color: #f25f4c;
+  animation: rainbow 40s linear infinite;
+}
+
+.dark {
+  /* zinc-950 */
+  --background: oklch(0.141 0.005 285.823);
+
+  /* zinc-50 */
+  --foreground: oklch(0.985 0 0);
+
+  /* zinc-700 */
+  --primary: oklch(0.37 0.013 285.805);
+
+  /* zinc-50 */
+  --primary-foreground: oklch(0.985 0 0);
+
+  /* zinc-800 */
+  --secondary: oklch(0.274 0.006 286.033);
+
+  /* zinc-50 */
+  --secondary-foreground: oklch(0.985 0 0);
+
+  /* zinc-800 */
+  --muted: oklch(0.274 0.006 286.033);
+
+  /* zinc-400 */
+  --muted-foreground: oklch(0.705 0.015 286.067);
+
+  /* zinc-900 */
+  --card: oklch(0.21 0.006 285.885);
+
+  /* zinc-50 */
+  --card-foreground: oklch(0.985 0 0);
+
+  /* zinc-900 */
+  --popover: oklch(0.21 0.006 285.885);
+
+  /* zinc-50 */
+  --popover-foreground: oklch(0.985 0 0);
+
+  /* zinc-700 */
+  --popover-border: oklch(0.37 0.013 285.805);
+
+  /* zinc-800 */
+  --accent: oklch(0.274 0.006 286.033);
+
+  /* zinc-50 */
+  --accent-foreground: oklch(0.985 0 0);
+
+  /* zinc-800 */
+  --border: oklch(0.274 0.006 286.033);
+
+  /* --edge: color-mix(in oklab, var(--border) 64%, var(--background)); */
+
+  /* zinc-800 */
+  --input: oklch(0.274 0.006 286.033);
+
+  /* green-500 */
+  --success: oklch(0.723 0.219 149.579);
+
+  /* red-700 */
+  --destructive: oklch(0.505 0.213 27.518);
+
+  /* blue-500 */
+  --link: oklch(0.623 0.214 259.815);
+
+  /* zinc-900 */
+  --code: oklch(0.21 0.006 285.885);
+
+  /* zinc-50 */
+  --code-foreground: oklch(0.985 0 0);
+
+  /* zinc-500 */
+  --code-number: oklch(0.552 0.016 285.938);
+
+  /* zinc-800 */
+  --code-highlight: oklch(0.274 0.006 286.033);
+
+  --shadow-popover: 0 0 24px rgba(0, 0, 0, 0.5);
+}
+
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    @apply motion-safe:scroll-smooth;
+  }
+
+  body {
+    @apply overscroll-y-none bg-background font-sans text-foreground antialiased;
+    font-synthesis-weight: none;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Custom scrollbar styling. Thanks @shadcn-ui */
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 5px;
+  }
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+  }
+
+  [id] {
+    @apply scroll-mt-22;
+  }
+}
+
+@layer components {
+  [data-rehype-pretty-code-figure] {
+    @apply relative my-6 rounded-lg bg-code text-code-foreground;
+
+    pre {
+      @apply overflow-x-auto px-4 py-4 has-data-line-numbers:px-0;
+    }
+
+    code {
+      @apply font-mono text-sm;
+    }
+  }
+
+  [data-line] {
+    @apply py-0.5;
+  }
+
+  [data-line] span {
+    @apply text-(--shiki-light) dark:text-(--shiki-dark);
+  }
+
+  [data-rehype-pretty-code-title] {
+    @apply flex items-center gap-2 border-b px-4 py-2.5 text-sm text-muted-foreground [&_svg]:size-4 [&_svg]:text-muted-foreground;
+  }
+
+  [data-line-numbers] {
+    counter-reset: line;
+  }
+
+  [data-line-numbers] > [data-line]::before {
+    counter-increment: line;
+    content: counter(line);
+    @apply sticky left-0 inline-block w-16 bg-code pr-6 text-right text-sm text-code-number;
+  }
+
+  [data-line-numbers] [data-highlighted-line][data-line]::before {
+    @apply bg-code-highlight;
+  }
+
+  [data-highlighted-line] {
+    @apply bg-code-highlight;
+  }
+}
+
+
+
+.icon-logo {
+  stroke: var(--highlight-color);
+  transition: stroke 350ms;
+}
+
+.icon-logo path {
+  stroke-dashoffset: 1px;
+  stroke-dasharray: 350px 0;
+  animation: logoDraw 8s ease forwards infinite;
+}
+
+@keyframes logoDraw {
+  0% {
+    stroke-dashoffset: 1px;
+    stroke-dasharray: 0 1000;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  40% {
+    stroke-dasharray: 1000 0;
+  }
+  /* Moving back */
+  85% {
+    stroke-dasharray: 1000 0;
+  }
+  95%,
+  to {
+    stroke-dasharray: 0 1000;
+  }
+}
+
+@keyframes rainbow {
+  0% {
+    --highlight-color: #00a98e;
+    --color-hover: #00a98e;
+  }
+
+  1.25% {
+    --highlight-color: #00a996;
+    --color-hover: #00a996;
+  }
+
+  2.5% {
+    --highlight-color: #00a99f;
+    --color-hover: #00a99f;
+  }
+
+  3.75% {
+    --highlight-color: #00a9a7;
+    --color-hover: #00a9a7;
+  }
+
+  5% {
+    --highlight-color: #00a9b0;
+    --color-hover: #00a9b0;
+  }
+
+  6.25% {
+    --highlight-color: #00a9b8;
+    --color-hover: #00a9b8;
+  }
+
+  7.5% {
+    --highlight-color: #00a9c0;
+    --color-hover: #00a9c0;
+  }
+
+  8.75% {
+    --highlight-color: #00a8c7;
+    --color-hover: #00a8c7;
+  }
+
+  10% {
+    --highlight-color: #00a8cf;
+    --color-hover: #00a8cf;
+  }
+
+  11.25% {
+    --highlight-color: #00a7d5;
+    --color-hover: #00a7d5;
+  }
+
+  12.5% {
+    --highlight-color: #00a6dc;
+    --color-hover: #00a6dc;
+  }
+
+  13.75% {
+    --highlight-color: #00a6e2;
+    --color-hover: #00a6e2;
+  }
+
+  15% {
+    --highlight-color: #00a4e7;
+    --color-hover: #00a4e7;
+  }
+
+  16.25% {
+    --highlight-color: #00a3ec;
+    --color-hover: #00a3ec;
+  }
+
+  17.5% {
+    --highlight-color: #00a2f1;
+    --color-hover: #00a2f1;
+  }
+
+  18.75% {
+    --highlight-color: #00a0f4;
+    --color-hover: #00a0f4;
+  }
+
+  20% {
+    --highlight-color: #009ff7;
+    --color-hover: #009ff7;
+  }
+
+  21.25% {
+    --highlight-color: #009dfa;
+    --color-hover: #009dfa;
+  }
+
+  22.5% {
+    --highlight-color: #009bfc;
+    --color-hover: #009bfc;
+  }
+
+  23.75% {
+    --highlight-color: #0098fd;
+    --color-hover: #0098fd;
+  }
+
+  25% {
+    --highlight-color: #0096fd;
+    --color-hover: #0096fd;
+  }
+
+  26.25% {
+    --highlight-color: #0093fd;
+    --color-hover: #0093fd;
+  }
+
+  27.5% {
+    --highlight-color: #2e90fc;
+    --color-hover: #2e90fc;
+  }
+
+  28.75% {
+    --highlight-color: #4d8dfa;
+    --color-hover: #4d8dfa;
+  }
+
+  30% {
+    --highlight-color: #638af8;
+    --color-hover: #638af8;
+  }
+
+  31.25% {
+    --highlight-color: #7587f5;
+    --color-hover: #7587f5;
+  }
+
+  32.5% {
+    --highlight-color: #8583f1;
+    --color-hover: #8583f1;
+  }
+
+  33.75% {
+    --highlight-color: #9280ed;
+    --color-hover: #9280ed;
+  }
+
+  35% {
+    --highlight-color: #9f7ce9;
+    --color-hover: #9f7ce9;
+  }
+
+  36.25% {
+    --highlight-color: #aa78e3;
+    --color-hover: #aa78e3;
+  }
+
+  37.5% {
+    --highlight-color: #b574dd;
+    --color-hover: #b574dd;
+  }
+
+  38.75% {
+    --highlight-color: #be71d7;
+    --color-hover: #be71d7;
+  }
+
+  40% {
+    --highlight-color: #c76dd1;
+    --color-hover: #c76dd1;
+  }
+
+  41.25% {
+    --highlight-color: #cf69c9;
+    --color-hover: #cf69c9;
+  }
+
+  42.5% {
+    --highlight-color: #d566c2;
+    --color-hover: #d566c2;
+  }
+
+  43.75% {
+    --highlight-color: #dc63ba;
+    --color-hover: #dc63ba;
+  }
+
+  45% {
+    --highlight-color: #e160b3;
+    --color-hover: #e160b3;
+  }
+
+  46.25% {
+    --highlight-color: #e65eab;
+    --color-hover: #e65eab;
+  }
+
+  47.5% {
+    --highlight-color: #e95ca2;
+    --color-hover: #e95ca2;
+  }
+
+  48.75% {
+    --highlight-color: #ed5a9a;
+    --color-hover: #ed5a9a;
+  }
+
+  50% {
+    --highlight-color: #ef5992;
+    --color-hover: #ef5992;
+  }
+
+  51.25% {
+    --highlight-color: #f15989;
+    --color-hover: #f15989;
+  }
+
+  52.5% {
+    --highlight-color: #f25981;
+    --color-hover: #f25981;
+  }
+
+  53.75% {
+    --highlight-color: #f25a79;
+    --color-hover: #f25a79;
+  }
+
+  55% {
+    --highlight-color: #f25c71;
+    --color-hover: #f25c71;
+  }
+
+  56.25% {
+    --highlight-color: #f15e69;
+    --color-hover: #f15e69;
+  }
+
+  57.5% {
+    --highlight-color: #ef6061;
+    --color-hover: #ef6061;
+  }
+
+  58.75% {
+    --highlight-color: #ed635a;
+    --color-hover: #ed635a;
+  }
+
+  60% {
+    --highlight-color: #eb6552;
+    --color-hover: #eb6552;
+  }
+
+  61.25% {
+    --highlight-color: #e8694b;
+    --color-hover: #e8694b;
+  }
+
+  62.5% {
+    --highlight-color: #e46c44;
+    --color-hover: #e46c44;
+  }
+
+  63.75% {
+    --highlight-color: #e06f3d;
+    --color-hover: #e06f3d;
+  }
+
+  65% {
+    --highlight-color: #db7336;
+    --color-hover: #db7336;
+  }
+
+  66.25% {
+    --highlight-color: #d77630;
+    --color-hover: #d77630;
+  }
+
+  67.5% {
+    --highlight-color: #d17a2a;
+    --color-hover: #d17a2a;
+  }
+
+  68.75% {
+    --highlight-color: #cc7d24;
+    --color-hover: #cc7d24;
+  }
+
+  70% {
+    --highlight-color: #c6811e;
+    --color-hover: #c6811e;
+  }
+
+  71.25% {
+    --highlight-color: #bf8418;
+    --color-hover: #bf8418;
+  }
+
+  72.5% {
+    --highlight-color: #b98713;
+    --color-hover: #b98713;
+  }
+
+  73.75% {
+    --highlight-color: #b28a0f;
+    --color-hover: #b28a0f;
+  }
+
+  75% {
+    --highlight-color: #ab8d0c;
+    --color-hover: #ab8d0c;
+  }
+
+  76.25% {
+    --highlight-color: #a3900b;
+    --color-hover: #a3900b;
+  }
+
+  77.5% {
+    --highlight-color: #9c920d;
+    --color-hover: #9c920d;
+  }
+
+  78.75% {
+    --highlight-color: #949510;
+    --color-hover: #949510;
+  }
+
+  80% {
+    --highlight-color: #8b9715;
+    --color-hover: #8b9715;
+  }
+
+  81.25% {
+    --highlight-color: #83991b;
+    --color-hover: #83991b;
+  }
+
+  82.5% {
+    --highlight-color: #7a9b21;
+    --color-hover: #7a9b21;
+  }
+
+  83.75% {
+    --highlight-color: #719d27;
+    --color-hover: #719d27;
+  }
+
+  85% {
+    --highlight-color: #679e2e;
+    --color-hover: #679e2e;
+  }
+
+  86.25% {
+    --highlight-color: #5da035;
+    --color-hover: #5da035;
+  }
+
+  87.5% {
+    --highlight-color: #51a13c;
+    --color-hover: #51a13c;
+  }
+
+  88.75% {
+    --highlight-color: #44a244;
+    --color-hover: #44a244;
+  }
+
+  90% {
+    --highlight-color: #34a44b;
+    --color-hover: #34a44b;
+  }
+
+  91.25% {
+    --highlight-color: #1ba553;
+    --color-hover: #1ba553;
+  }
+
+  92.5% {
+    --highlight-color: #00a65b;
+    --color-hover: #00a65b;
+  }
+
+  93.75% {
+    --highlight-color: #00a663;
+    --color-hover: #00a663;
+  }
+
+  95% {
+    --highlight-color: #00a76c;
+    --color-hover: #00a76c;
+  }
+
+  96.25% {
+    --highlight-color: #00a874;
+    --color-hover: #00a874;
+  }
+
+  97.5% {
+    --highlight-color: #00a87d;
+    --color-hover: #00a87d;
+  }
+
+  98.75% {
+    --highlight-color: #00a985;
+    --color-hover: #00a985;
+  }
+
+  to {
+    --highlight-color: #00a98e;
+    --color-hover: #00a98e;
+  }
+}
