@@ -33,6 +33,8 @@ export const MAIN_NAV: NavItem[] = [
   // },
 ];
 
+export const GITHUB_USERNAME = "hunghg255";
+export const SOURCE_CODE_GITHUB_REPO = "hunghg255/hunghg.me";
 export const SOURCE_CODE_GITHUB_URL = "https://github.com/hunghg255/hunghg.me";
 
 export const UTM_PARAMS = {

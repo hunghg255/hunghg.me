@@ -1,6 +1,7 @@
 import { About } from "@/features/profile/components/about";
 import { Certifications } from "@/features/profile/components/certifications";
 import { Experiences } from "@/features/profile/components/experiences";
+import { GitHubContributions } from "@/features/profile/components/github-contributions";
 import { Overview } from "@/features/profile/components/overview";
 import { ProfileCover } from "@/features/profile/components/profile-cover";
 import { ProfileHeader } from "@/features/profile/components/profile-header";
@@ -31,6 +32,9 @@ export default function Page() {
         <Separator />
 
         <About />
+        <Separator />
+
+        <GitHubContributions />
         <Separator />
 
         <TeckStack />
