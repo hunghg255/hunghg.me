@@ -47,7 +47,10 @@ export async function GET() {
     }
 
     const data: WakatimeAllTimeResponse = await response.json();
-    return NextResponse.json(data);
+    return NextResponse.json({
+      data,
+      lastUpdated: new Date().toISOString(),
+    });
   } catch (error) {
     console.error("Error fetching Wakatime all-time stats:", error);
     return NextResponse.json(

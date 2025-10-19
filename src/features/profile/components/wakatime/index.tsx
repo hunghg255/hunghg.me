@@ -89,8 +89,8 @@ export default function Wakatime() {
             last_year: lastYear,
             all_time: allTime,
           },
-          allTimeData: allTimeData,
-          lastUpdated: new Date().toISOString(),
+          allTimeData: allTimeData?.data,
+          lastUpdated: allTimeData?.lastUpdated,
         });
       } catch (error) {
         console.error("Failed to fetch Wakatime data:", error);

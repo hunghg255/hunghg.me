@@ -31,6 +31,9 @@ export function StatsServerContent({ data }: StatsServerContentProps) {
             </p>
             <RangeSelector value={selectedRange} onChange={setSelectedRange} />
           </div>
+          <p className="text-sm text-muted-foreground">
+            Last updated: {data?.lastUpdated}
+          </p>
         </PanelContent>
       </Panel>
 
