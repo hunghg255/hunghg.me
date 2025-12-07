@@ -11,7 +11,7 @@ overrides:
 dependencies:
   '@bprogress/next':
     specifier: ^3.2.12
-    version: 3.2.12(next@15.4.4)(react-dom@19.1.0)(react@19.1.0)
+    version: 3.2.12(next@15.4.8)(react-dom@19.1.0)(react@19.1.0)
   '@hookform/resolvers':
     specifier: ^4.1.0
     version: 4.1.3(react-hook-form@7.61.1)
@@ -20,10 +20,10 @@ dependencies:
     version: 1.0.14(react@19.1.0)
   '@vercel/analytics':
     specifier: ^1.5.0
-    version: 1.5.0(next@15.4.4)(react@19.1.0)
+    version: 1.5.0(next@15.4.8)(react@19.1.0)
   '@vercel/speed-insights':
     specifier: ^1.2.0
-    version: 1.2.0(next@15.4.4)(react@19.1.0)
+    version: 1.2.0(next@15.4.8)(react@19.1.0)
   class-variance-authority:
     specifier: ^0.7.1
     version: 0.7.1
@@ -41,7 +41,7 @@ dependencies:
     version: 1.11.13
   fumadocs-core:
     specifier: ^15.5.0
-    version: 15.6.6(@types/react@19.1.8)(next@15.4.4)(react-dom@19.1.0)(react@19.1.0)
+    version: 15.6.6(@types/react@19.1.8)(next@15.4.8)(react-dom@19.1.0)(react@19.1.0)
   jotai:
     specifier: ^2.12.5
     version: 2.12.5(@types/react@19.1.8)(react@19.1.0)
@@ -55,8 +55,8 @@ dependencies:
     specifier: ^12.18.1
     version: 12.23.9(react-dom@19.1.0)(react@19.1.0)
   next:
-    specifier: 15.4.4
-    version: 15.4.4(@babel/core@7.28.0)(react-dom@19.1.0)(react@19.1.0)
+    specifier: 15.4.8
+    version: 15.4.8(@babel/core@7.28.0)(react-dom@19.1.0)(react@19.1.0)
   next-mdx-remote:
     specifier: ^5.0.0
     version: 5.0.0(@types/react@19.1.8)(acorn@8.15.0)(react@19.1.0)
@@ -480,7 +480,7 @@ packages:
     resolution: {integrity: sha512-q/AqpurI/1uJzOrQROuZWixn/+ARekh+uvJGwLCP6HQ/EqAX4SkvNf618tSBxL4NysC0MwqAppb/mRw6Tzi61w==}
     dev: false
 
-  /@bprogress/next@3.2.12(next@15.4.4)(react-dom@19.1.0)(react@19.1.0):
+  /@bprogress/next@3.2.12(next@15.4.8)(react-dom@19.1.0)(react@19.1.0):
     resolution: {integrity: sha512-/ZvNwbAd0ty9QiQwCfT2AfwWVdAaEyCPx5RUz3CfiiJS/OLBohhDz/IC/srhwK9GnXeXavvtiUrpKzN5GJDwlw==}
     peerDependencies:
       next: '>=13.0.0'
@@ -489,7 +489,7 @@ packages:
     dependencies:
       '@bprogress/core': 1.3.4
       '@bprogress/react': 1.2.7(react-dom@19.1.0)(react@19.1.0)
-      next: 15.4.4(@babel/core@7.28.0)(react-dom@19.1.0)(react@19.1.0)
+      next: 15.4.8(@babel/core@7.28.0)(react-dom@19.1.0)(react@19.1.0)
       react: 19.1.0
       react-dom: 19.1.0(react@19.1.0)
     dev: false
@@ -1328,8 +1328,8 @@ packages:
       react: 19.1.0
     dev: false
 
-  /@next/env@15.4.4:
-    resolution: {integrity: sha512-SJKOOkULKENyHSYXE5+KiFU6itcIb6wSBjgM92meK0HVKpo94dNOLZVdLLuS7/BxImROkGoPsjR4EnuDucqiiA==}
+  /@next/env@15.4.8:
+    resolution: {integrity: sha512-LydLa2MDI1NMrOFSkO54mTc8iIHSttj6R6dthITky9ylXV2gCGi0bHQjVCtLGRshdRPjyh2kXbxJukDtBWQZtQ==}
     dev: false
 
   /@next/eslint-plugin-next@15.4.4:
@@ -1338,8 +1338,8 @@ packages:
       fast-glob: 3.3.1
     dev: true
 
-  /@next/swc-darwin-arm64@15.4.4:
-    resolution: {integrity: sha512-eVG55dnGwfUuG+TtnUCt+mEJ+8TGgul6nHEvdb8HEH7dmJIFYOCApAaFrIrxwtEq2Cdf+0m5sG1Np8cNpw9EAw==}
+  /@next/swc-darwin-arm64@15.4.8:
+    resolution: {integrity: sha512-Pf6zXp7yyQEn7sqMxur6+kYcywx5up1J849psyET7/8pG2gQTVMjU3NzgIt8SeEP5to3If/SaWmaA6H6ysBr1A==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [darwin]
@@ -1347,8 +1347,8 @@ packages:
     dev: false
     optional: true
 
-  /@next/swc-darwin-x64@15.4.4:
-    resolution: {integrity: sha512-zqG+/8apsu49CltEj4NAmCGZvHcZbOOOsNoTVeIXphYWIbE4l6A/vuQHyqll0flU2o3dmYCXsBW5FmbrGDgljQ==}
+  /@next/swc-darwin-x64@15.4.8:
+    resolution: {integrity: sha512-xla6AOfz68a6kq3gRQccWEvFC/VRGJmA/QuSLENSO7CZX5WIEkSz7r1FdXUjtGCQ1c2M+ndUAH7opdfLK1PQbw==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [darwin]
@@ -1356,8 +1356,8 @@ packages:
     dev: false
     optional: true
 
-  /@next/swc-linux-arm64-gnu@15.4.4:
-    resolution: {integrity: sha512-LRD4l2lq4R+2QCHBQVC0wjxxkLlALGJCwigaJ5FSRSqnje+MRKHljQNZgDCaKUZQzO/TXxlmUdkZP/X3KNGZaw==}
+  /@next/swc-linux-arm64-gnu@15.4.8:
+    resolution: {integrity: sha512-y3fmp+1Px/SJD+5ntve5QLZnGLycsxsVPkTzAc3zUiXYSOlTPqT8ynfmt6tt4fSo1tAhDPmryXpYKEAcoAPDJw==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [linux]
@@ -1365,8 +1365,8 @@ packages:
     dev: false
     optional: true
 
-  /@next/swc-linux-arm64-musl@15.4.4:
-    resolution: {integrity: sha512-LsGUCTvuZ0690fFWerA4lnQvjkYg9gHo12A3wiPUR4kCxbx/d+SlwmonuTH2SWZI+RVGA9VL3N0S03WTYv6bYg==}
+  /@next/swc-linux-arm64-musl@15.4.8:
+    resolution: {integrity: sha512-DX/L8VHzrr1CfwaVjBQr3GWCqNNFgyWJbeQ10Lx/phzbQo3JNAxUok1DZ8JHRGcL6PgMRgj6HylnLNndxn4Z6A==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [linux]
@@ -1374,8 +1374,8 @@ packages:
     dev: false
     optional: true
 
-  /@next/swc-linux-x64-gnu@15.4.4:
-    resolution: {integrity: sha512-aOy5yNRpLL3wNiJVkFYl6w22hdREERNjvegE6vvtix8LHRdsTHhWTpgvcYdCK7AIDCQW5ATmzr9XkPHvSoAnvg==}
+  /@next/swc-linux-x64-gnu@15.4.8:
+    resolution: {integrity: sha512-9fLAAXKAL3xEIFdKdzG5rUSvSiZTLLTCc6JKq1z04DR4zY7DbAPcRvNm3K1inVhTiQCs19ZRAgUerHiVKMZZIA==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [linux]
@@ -1383,8 +1383,8 @@ packages:
     dev: false
     optional: true
 
-  /@next/swc-linux-x64-musl@15.4.4:
-    resolution: {integrity: sha512-FL7OAn4UkR8hKQRGBmlHiHinzOb07tsfARdGh7v0Z0jEJ3sz8/7L5bR23ble9E6DZMabSStqlATHlSxv1fuzAg==}
+  /@next/swc-linux-x64-musl@15.4.8:
+    resolution: {integrity: sha512-s45V7nfb5g7dbS7JK6XZDcapicVrMMvX2uYgOHP16QuKH/JA285oy6HcxlKqwUNaFY/UC6EvQ8QZUOo19cBKSA==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [linux]
@@ -1392,8 +1392,8 @@ packages:
     dev: false
     optional: true
 
-  /@next/swc-win32-arm64-msvc@15.4.4:
-    resolution: {integrity: sha512-eEdNW/TXwjYhOulQh0pffTMMItWVwKCQpbziSBmgBNFZIIRn2GTXrhrewevs8wP8KXWYMx8Z+mNU0X+AfvtrRg==}
+  /@next/swc-win32-arm64-msvc@15.4.8:
+    resolution: {integrity: sha512-KjgeQyOAq7t/HzAJcWPGA8X+4WY03uSCZ2Ekk98S9OgCFsb6lfBE3dbUzUuEQAN2THbwYgFfxX2yFTCMm8Kehw==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [win32]
@@ -1401,8 +1401,8 @@ packages:
     dev: false
     optional: true
 
-  /@next/swc-win32-x64-msvc@15.4.4:
-    resolution: {integrity: sha512-SE5pYNbn/xZKMy1RE3pAs+4xD32OI4rY6mzJa4XUkp/ItZY+OMjIgilskmErt8ls/fVJ+Ihopi2QIeW6O3TrMw==}
+  /@next/swc-win32-x64-msvc@15.4.8:
+    resolution: {integrity: sha512-Exsmf/+42fWVnLMaZHzshukTBxZrSwuuLKFvqhGHJ+mC1AokqieLY/XzAl3jc/CqhXLqLY3RRjkKJ9YnLPcRWg==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [win32]
@@ -3453,7 +3453,7 @@ packages:
     dev: true
     optional: true
 
-  /@vercel/analytics@1.5.0(next@15.4.4)(react@19.1.0):
+  /@vercel/analytics@1.5.0(next@15.4.8)(react@19.1.0):
     resolution: {integrity: sha512-MYsBzfPki4gthY5HnYN7jgInhAZ7Ac1cYDoRWFomwGHWEX7odTEzbtg9kf/QSo7XEsEAqlQugA6gJ2WS2DEa3g==}
     peerDependencies:
       '@remix-run/react': ^2
@@ -3479,11 +3479,11 @@ packages:
       vue-router:
         optional: true
     dependencies:
-      next: 15.4.4(@babel/core@7.28.0)(react-dom@19.1.0)(react@19.1.0)
+      next: 15.4.8(@babel/core@7.28.0)(react-dom@19.1.0)(react@19.1.0)
       react: 19.1.0
     dev: false
 
-  /@vercel/speed-insights@1.2.0(next@15.4.4)(react@19.1.0):
+  /@vercel/speed-insights@1.2.0(next@15.4.8)(react@19.1.0):
     resolution: {integrity: sha512-y9GVzrUJ2xmgtQlzFP2KhVRoCglwfRQgjyfY607aU0hh0Un6d0OUyrJkjuAlsV18qR4zfoFPs/BiIj9YDS6Wzw==}
     requiresBuild: true
     peerDependencies:
@@ -3507,7 +3507,7 @@ packages:
       vue-router:
         optional: true
     dependencies:
-      next: 15.4.4(@babel/core@7.28.0)(react-dom@19.1.0)(react@19.1.0)
+      next: 15.4.8(@babel/core@7.28.0)(react-dom@19.1.0)(react@19.1.0)
       react: 19.1.0
     dev: false
 
@@ -5309,7 +5309,7 @@ packages:
     dev: true
     optional: true
 
-  /fumadocs-core@15.6.6(@types/react@19.1.8)(next@15.4.4)(react-dom@19.1.0)(react@19.1.0):
+  /fumadocs-core@15.6.6(@types/react@19.1.8)(next@15.4.8)(react-dom@19.1.0)(react@19.1.0):
     resolution: {integrity: sha512-90sUbejUDevfDHykXXudw+3xTqYjuSZU1evhJiRBiZ0Oy0xQX4p5zPO48b5dhuVp44osvOH0ZKfHsVdkor6kZQ==}
     peerDependencies:
       '@mixedbread/sdk': ^0.19.0
@@ -5345,7 +5345,7 @@ packages:
       hast-util-to-jsx-runtime: 2.3.6
       image-size: 2.0.2
       negotiator: 1.0.0
-      next: 15.4.4(@babel/core@7.28.0)(react-dom@19.1.0)(react@19.1.0)
+      next: 15.4.8(@babel/core@7.28.0)(react-dom@19.1.0)(react@19.1.0)
       npm-to-yarn: 3.0.1
       react: 19.1.0
       react-dom: 19.1.0(react@19.1.0)
@@ -7285,8 +7285,8 @@ packages:
       react-dom: 19.1.0(react@19.1.0)
     dev: false
 
-  /next@15.4.4(@babel/core@7.28.0)(react-dom@19.1.0)(react@19.1.0):
-    resolution: {integrity: sha512-kNcubvJjOL9yUOfwtZF3HfDhuhp+kVD+FM2A6Tyua1eI/xfmY4r/8ZS913MMz+oWKDlbps/dQOWdDricuIkXLw==}
+  /next@15.4.8(@babel/core@7.28.0)(react-dom@19.1.0)(react@19.1.0):
+    resolution: {integrity: sha512-jwOXTz/bo0Pvlf20FSb6VXVeWRssA2vbvq9SdrOPEg9x8E1B27C2rQtvriAn600o9hH61kjrVRexEffv3JybuA==}
     engines: {node: ^18.18.0 || ^19.8.0 || >= 20.0.0}
     hasBin: true
     peerDependencies:
@@ -7306,7 +7306,7 @@ packages:
       sass:
         optional: true
     dependencies:
-      '@next/env': 15.4.4
+      '@next/env': 15.4.8
       '@swc/helpers': 0.5.15
       caniuse-lite: 1.0.30001727
       postcss: 8.4.31
@@ -7314,14 +7314,14 @@ packages:
       react-dom: 19.1.0(react@19.1.0)
       styled-jsx: 5.1.6(@babel/core@7.28.0)(react@19.1.0)
     optionalDependencies:
-      '@next/swc-darwin-arm64': 15.4.4
-      '@next/swc-darwin-x64': 15.4.4
-      '@next/swc-linux-arm64-gnu': 15.4.4
-      '@next/swc-linux-arm64-musl': 15.4.4
-      '@next/swc-linux-x64-gnu': 15.4.4
-      '@next/swc-linux-x64-musl': 15.4.4
-      '@next/swc-win32-arm64-msvc': 15.4.4
-      '@next/swc-win32-x64-msvc': 15.4.4
+      '@next/swc-darwin-arm64': 15.4.8
+      '@next/swc-darwin-x64': 15.4.8
+      '@next/swc-linux-arm64-gnu': 15.4.8
+      '@next/swc-linux-arm64-musl': 15.4.8
+      '@next/swc-linux-x64-gnu': 15.4.8
+      '@next/swc-linux-x64-musl': 15.4.8
+      '@next/swc-win32-arm64-msvc': 15.4.8
+      '@next/swc-win32-x64-msvc': 15.4.8
       sharp: 0.34.3
     transitivePeerDependencies:
       - '@babel/core'
