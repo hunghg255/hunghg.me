@@ -27,6 +27,9 @@ I started learning web programming in 2018. Before that, I had a background in C
 In December 2019, when school was almost done, I decided to do an internship at a company to experience what a real environment is like. I learned a lot from my boss and colleagues while working.
 
 I want to be a good person in the field that I have chosen so I tried a lot, worked hard.
+
+- Creator of [React Tiptap Editor](https://reactjs-tiptap-editor-playground.vercel.app/): A rich text editor for React based on Tiptap with support for Markdown, HTML, and custom extensions.
+- 10k+ weekly downloads on [npm](https://www.npmjs.com/package/reactjs-tiptap-editor)
   `,
   avatar: "https://avatars.githubusercontent.com/u/42096908",
   ogImage: "https://assets.hunghg.me/images/screenshot-og-image-dark.png",

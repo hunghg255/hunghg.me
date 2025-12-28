@@ -5,7 +5,7 @@ export const lib: Registry["items"] = [
     name: "utils",
     type: "registry:lib",
     title: "Utility Functions",
-    author: "ncdai <dai@hunghg.me>",
+    author: "hunghg255",
     dependencies: ["clsx", "tailwind-merge"],
     files: [
       {

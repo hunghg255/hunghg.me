@@ -133,7 +133,7 @@ export default function Wakatime() {
       <Panel id="wakatime-stats" className="scroll-mt-22">
         <PanelContent>
           <div className="space-y-4">
-            <p className="text-muted-foreground">
+            <p className="font-mono text-sm text-muted-foreground">
               Detailed insights from Wakatime tracking your coding activities,
               languages used, projects worked on, and productivity metrics.
             </p>

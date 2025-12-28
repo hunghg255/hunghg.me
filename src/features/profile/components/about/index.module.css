@@ -1,31 +1,6 @@
-.aboutHeading {
-  margin-bottom: 4.5rem;
-}
-
-.aboutTitle {
-  color: var(--highlight-color);
-  font-size: 2rem;
-  margin: 0px 0px 1rem;
-  font-weight: 700;
-  transition: color 0.2s ease-out 0s;
-  text-align: center;
-}
-
-.aboutSubtitle {
-  text-align: center;
-  color: var(--primary-color);
-  font-size: 1.6rem;
-  font-weight: 300;
-}
-
-.aboutSubtitle span {
-  font-weight: 600;
-  font-style: italic;
-}
-
 
 .aboutMe p {
-  /* font-size: 1.5rem; */
+  font-size: 14px;
   color: var(--primary-color);
   font-weight: 300;
   line-height: 1.8;
@@ -34,6 +9,7 @@
 }
 
 .aboutMe a {
+  font-size: 14px;
   display: inline;
   text-decoration: underline;
   font-style: italic;

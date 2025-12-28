@@ -26,12 +26,12 @@ export function StatsServerContent({ data }: StatsServerContentProps) {
       <Panel id="range-selector" className="scroll-mt-22">
         <PanelContent>
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-            <p className="text-sm text-muted-foreground">
+            <p className="font-mono text-sm text-muted-foreground">
               Select a time period to view your coding statistics
             </p>
             <RangeSelector value={selectedRange} onChange={setSelectedRange} />
           </div>
-          <p className="text-sm text-muted-foreground">
+          <p className="font-mono text-sm text-muted-foreground">
             Last updated: {data?.lastUpdated}
           </p>
         </PanelContent>

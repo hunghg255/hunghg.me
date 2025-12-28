@@ -16,8 +16,8 @@ export function About() {
         {/* <Prose>
           <Markdown>{USER.about}</Markdown>
         </Prose> */}
-        <div className={styles.aboutMe} data-aos="fade-up">
-          <p>
+        <div className={styles.aboutMe}>
+          <p className="font-mono">
             Hi, my name is <span className={styles.hightLight}>Hung</span>,
             i&apos;m {new Date().getFullYear() - 1997} years old. I got a
             bachelor of Electronics Telecommunication Engineering at Ha Noi
@@ -27,7 +27,7 @@ export function About() {
             <span className={styles.hightLight}>Web Development.</span>
           </p>
 
-          <p>
+          <p className="font-mono">
             I started learning web programming in 2018. Before that, I had a
             background in C / C ++ programming so getting access to javascript
             is not difficult. I have been in love with javascript since I did
@@ -51,12 +51,12 @@ export function About() {
             ...
           </p>
 
-          <p>
+          <p className="font-mono">
             In December 2019, when school was almost done, I decided to do an
             internship at a company to experience what a real environment is
             like. I learned a lot from my boss and colleagues while working.
           </p>
-          <p>
+          <p className="font-mono">
             I want to be a good person in the field that I have chosen so I
             tried a lot, worked hard.
           </p>
