@@ -1,3 +1,4 @@
+import { GitHubSponsors } from "@/components/github-sponsors";
 import { About } from "@/features/profile/components/about";
 import { Certifications } from "@/features/profile/components/certifications";
 import { Experiences } from "@/features/profile/components/experiences";
@@ -47,6 +48,9 @@ export default function Page() {
         <Separator />
 
         <Certifications />
+        <Separator />
+
+        <GitHubSponsors />
         <Separator />
 
         <Wakatime />
