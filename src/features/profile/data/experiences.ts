@@ -8,7 +8,7 @@ export const EXPERIENCES: Experience[] = [
     positions: [
       {
         id: "20f8bfe5-b6a3-4b0d-ac2f-6fccd50d417e",
-        title: "Frontend Developer",
+        title: "Web Development",
         employmentPeriod: {
           start: "01.2023",
         },
@@ -19,9 +19,7 @@ export const EXPERIENCES: Experience[] = [
         skills: [
           "TypeScript",
           "React",
-          "Next.js",
-          "Tailwind CSS",
-          "Agile",
+          "Node.js",
           "Teamwork",
           "Research",
           "Problem-solving",
