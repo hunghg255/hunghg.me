@@ -10,7 +10,8 @@ export const EXPERIENCES: Experience[] = [
         id: "20f8bfe5-b6a3-4b0d-ac2f-6fccd50d417e",
         title: "Web Development",
         employmentPeriod: {
-          start: "01.2023",
+          start: "12.2020",
+          end: "09.2026",
         },
         employmentType: "Full-time",
         icon: "code",
@@ -39,6 +40,7 @@ export const EXPERIENCES: Experience[] = [
         title: "Frontend Developer Intern",
         employmentPeriod: {
           start: "09.2019",
+          end: "12.2020",
         },
         employmentType: "full-time",
         icon: "code",
