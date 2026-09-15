@@ -1,4 +1,4 @@
-export function LogoMark(props: React.ComponentProps<"svg">) {
+export function LogoMark(_props: React.ComponentProps<"svg">) {
   return (
     <div className={"icon-logo"}>
       <svg viewBox="0 0 304 304" width={60} fill="none">

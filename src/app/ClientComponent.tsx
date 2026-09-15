@@ -1,8 +1,7 @@
 "use client";
 
-import React from "react";
-
 import dynamic from "next/dynamic";
+import React from "react";
 
 const Plum = dynamic(() => import("@/components/Plum/Plum"), {
   ssr: false,

@@ -43,6 +43,16 @@ pnpm dev
 
 The application should now be available at http://localhost:1408
 
+## Linting
+
+Run `pnpm lint` to lint `src` with Oxlint, or `pnpm lint:fix` to apply
+automatic fixes. Configuration lives in `.oxlintrc.json`. The pre-commit
+configuration also runs Oxlint on staged JavaScript and TypeScript files.
+
+Next.js, React, accessibility, and TypeScript rules use native Oxlint rules.
+The import sorting plugin and two React rules (`no-deprecated` and
+`require-render-return`) run through Oxlint's JS plugin support.
+
 ## Building for Production
 
 ```bash

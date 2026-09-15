@@ -2,9 +2,10 @@
 
 import React, { useEffect, useRef } from "react";
 
-import styles from "./index.module.css";
-import { useWindowSize } from "@/hooks/useWindowSize";
 import { useRafFn } from "@/hooks/useRafFn";
+import { useWindowSize } from "@/hooks/useWindowSize";
+
+import styles from "./index.module.css";
 
 export function polar2cart(x = 0, y = 0, r = 0, theta = 0) {
   const dx = r * Math.cos(theta);
@@ -16,6 +17,14 @@ const r180 = Math.PI;
 const r90 = Math.PI / 2;
 const r15 = Math.PI / 12;
 const color = "#88888825";
+const { random } = Math;
+type CanvasContext = CanvasRenderingContext2D & {
+  webkitBackingStorePixelRatio?: number;
+  mozBackingStorePixelRatio?: number;
+  msBackingStorePixelRatio?: number;
+  oBackingStorePixelRatio?: number;
+  backingStorePixelRatio?: number;
+};
 
 function initCanvas(
   canvas: HTMLCanvasElement,
@@ -23,7 +32,8 @@ function initCanvas(
   height = 400,
   _dpi?: number
 ) {
-  const ctx: any = canvas.getContext("2d");
+  const ctx = canvas.getContext("2d") as CanvasContext | null;
+  if (!ctx) return null;
 
   const dpr = window.devicePixelRatio || 1;
   const bsr =
@@ -48,26 +58,26 @@ function initCanvas(
 const Plum = () => {
   const el = useRef<HTMLCanvasElement | null>(null);
 
-  const { random } = Math;
   const size = useWindowSize();
-  const start = useRef<any>(() => {});
   const MIN_BRANCH = 30;
   const len = useRef(6);
-  const stopped = useRef<any>(false);
 
-  const refRaf = useRafFn();
+  const { init } = useRafFn();
 
   useEffect(() => {
-    const canvas = el.current as any;
-    const { ctx } = initCanvas(canvas, size.width, size.height);
-    const { width, height } = canvas;
+    const canvas = el.current;
 
     if (!canvas) {
       return;
     }
 
-    let steps: any[] = [];
-    let prevSteps: any[] = [];
+    const initialized = initCanvas(canvas, size.width, size.height);
+    if (!initialized) return;
+    const { ctx } = initialized;
+    const { width, height } = canvas;
+
+    let steps: (() => void)[] = [];
+    let prevSteps: (() => void)[] = [];
 
     const step = (
       x: number,
@@ -114,9 +124,6 @@ const Plum = () => {
     let lastTime = performance.now();
     const interval = 1000 / 40; // 50fps
 
-    // eslint-disable-next-line prefer-const
-    let controls: any;
-
     const frame = () => {
       if (performance.now() - lastTime < interval) {
         return;
@@ -128,7 +135,6 @@ const Plum = () => {
 
       if (prevSteps.length === 0) {
         controls.pause();
-        stopped.current = true;
       }
 
       // Execute all the steps from the previous frame
@@ -141,14 +147,14 @@ const Plum = () => {
         }
       }
     };
-    controls = refRaf.init(frame, { immediate: false });
+    const controls = init(frame, { immediate: false });
 
     /**
      * 0.2 - 0.8
      */
     const randomMiddle = () => random() * 0.6 + 0.2;
 
-    start.current.value = () => {
+    const start = () => {
       controls.pause();
       ctx.clearRect(0, 0, width, height);
       ctx.lineWidth = 1;
@@ -164,11 +170,11 @@ const Plum = () => {
         steps = steps.slice(0, 2);
       }
       controls.resume();
-      stopped.current = false;
     };
 
-    start.current.value();
-  }, []);
+    start();
+    return controls.pause;
+  }, [init, size.width, size.height]);
 
   return (
     <div className={styles.wrap}>

@@ -1,9 +1,9 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import Image from "next/image";
+import { ExternalLink, Heart } from "lucide-react";
 import Link from "next/link";
-import { Heart, ExternalLink } from "lucide-react";
+import { useEffect, useState } from "react";
+
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -25,7 +25,7 @@ export function GitHubSponsors() {
   const [sponsors, setSponsors] = useState<Sponsor[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [debug, setDebug] = useState<any>(null);
+  const [debug, setDebug] = useState<Record<string, unknown> | null>(null);
 
   useEffect(() => {
     const fetchSponsors = async () => {
@@ -188,7 +188,7 @@ export function GitHubSponsors() {
           Thank you to these amazing people for supporting my work! 💖
         </p>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-          {sponsors.map((sponsor, index) => (
+          {sponsors.map((sponsor) => (
             <div key={sponsor.login}>
               <Link
                 href={sponsor.url}

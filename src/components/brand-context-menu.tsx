@@ -7,7 +7,7 @@ import { toast } from "sonner";
 
 import { copyText } from "@/utils/copy";
 
-import { LogoMark, getMarkSVG } from "./logo-mark";
+import { getMarkSVG, LogoMark } from "./logo-mark";
 import { getWordmarkSVG } from "./logo-wordmark";
 import {
   ContextMenu,

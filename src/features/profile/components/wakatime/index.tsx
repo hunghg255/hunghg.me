@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 
 import { StatsServerContent } from "@/features/wakatime/components/stats-server-content";
+import type { WakatimeStatsData } from "@/types/wakatime";
 
 import { Panel, PanelContent, PanelHeader, PanelTitle } from "../panel";
 
@@ -45,7 +46,7 @@ function StatsLoadingSkeleton() {
 }
 
 export default function Wakatime() {
-  const [data, setData] = useState<any>();
+  const [data, setData] = useState<WakatimeStatsData>();
 
   useEffect(() => {
     const init = async () => {

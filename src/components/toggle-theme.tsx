@@ -6,9 +6,9 @@ import React, { useCallback } from "react";
 
 import { META_THEME_COLORS } from "@/config/site";
 import { useMetaColor } from "@/hooks/use-meta-color";
+import { useSound } from "@/hooks/use-sound";
 
 import { Button } from "./ui/button";
-import { useSound } from "@/hooks/use-sound";
 
 export function ToggleTheme() {
   const { resolvedTheme, setTheme } = useTheme();

@@ -35,9 +35,9 @@ import { cn } from "@/lib/utils";
 import type { Post } from "@/types/blog";
 import { copyText } from "@/utils/copy";
 
-import { LogoMark, getMarkSVG } from "./logo-mark";
-import { getWordmarkSVG } from "./logo-wordmark";
 import { Icons } from "./icons";
+import { getMarkSVG, LogoMark } from "./logo-mark";
+import { getWordmarkSVG } from "./logo-wordmark";
 import { Button } from "./ui/button";
 import { Separator } from "./ui/separator";
 

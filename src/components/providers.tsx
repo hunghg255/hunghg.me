@@ -7,8 +7,8 @@ import { Provider as JotaiProvider } from "jotai";
 import { LazyMotion } from "motion/react";
 import { ThemeProvider } from "next-themes";
 
-import { Toaster } from "@/components/ui/sonner";
 import ClientComponent from "@/app/ClientComponent";
+import { Toaster } from "@/components/ui/sonner";
 
 const loadFeatures = () => import("motion/react").then((res) => res.domMax);
 

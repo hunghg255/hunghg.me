@@ -1,6 +1,6 @@
 import { LogoMark } from "@/components/logo-mark";
 
-export function LogoWordmark(props: React.ComponentProps<"svg">) {
+export function LogoWordmark(_props: React.ComponentProps<"svg">) {
   return <LogoMark />;
 }
 

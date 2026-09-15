@@ -1,9 +1,8 @@
 // import { Markdown } from "@/components/markdown";
 // import { Prose } from "@/components/ui/typography";
 // import { USER } from "@/data/user";
-import styles from "./index.module.css";
-
 import { Panel, PanelContent, PanelHeader, PanelTitle } from "../panel";
+import styles from "./index.module.css";
 
 export function About() {
   return (

@@ -10,6 +10,22 @@ interface Sponsor {
   isOneTime: boolean;
 }
 
+interface SponsorshipNode {
+  sponsorEntity: Omit<Sponsor, "isOneTime"> | null;
+  tier: { isOneTime: boolean } | null;
+}
+interface SponsorsResponse {
+  errors?: { message: string; path?: (string | number)[] }[];
+  data?: {
+    viewer?: {
+      login: string;
+      sponsorshipsAsMaintainer?: {
+        nodes: (SponsorshipNode | null)[];
+        totalCount: number;
+      };
+    };
+  };
+}
 export async function GET() {
   try {
     const token = process.env.GITHUB_TOKEN;
@@ -75,13 +91,13 @@ export async function GET() {
       });
     }
 
-    const data = await response.json();
+    const data: SponsorsResponse = await response.json();
 
     // Check if we have fatal errors (not just tier permission errors)
     if (data.errors) {
       // Check if errors are only about tier field (which we can ignore)
       const hasFatalError = data.errors.some(
-        (error: any) => !error.path?.includes("tier")
+        (error) => !error.path?.includes("tier")
       );
 
       if (hasFatalError) {
@@ -107,8 +123,14 @@ export async function GET() {
     const totalCount = viewer?.sponsorshipsAsMaintainer?.totalCount || 0;
 
     const sponsors: Sponsor[] = sponsorships
-      .filter((node: any) => node?.sponsorEntity)
-      .map((node: any) => {
+      .filter(
+        (
+          node
+        ): node is SponsorshipNode & {
+          sponsorEntity: NonNullable<SponsorshipNode["sponsorEntity"]>;
+        } => Boolean(node?.sponsorEntity)
+      )
+      .map((node) => {
         const sponsor = {
           login: node.sponsorEntity.login,
           name: node.sponsorEntity.name || node.sponsorEntity.login,

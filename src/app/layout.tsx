@@ -1,6 +1,6 @@
 import "@/styles/globals.css";
 
-import type { Metadata, Viewport } from "next";
+import type { Viewport } from "next";
 import Script from "next/script";
 import type { WebSite, WithContext } from "schema-dts";
 
