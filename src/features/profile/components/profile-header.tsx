@@ -22,7 +22,7 @@ export function ProfileHeader() {
 
         {/* Flag of Viet Nam */}
         <svg
-          className="absolute top-0 -left-px h-8 sm:h-9"
+          className="absolute top-0 -left-px h-[20px]"
           viewBox="0 0 30 20"
           xmlns="http://www.w3.org/2000/svg"
         >
