@@ -53,6 +53,15 @@ Next.js, React, accessibility, and TypeScript rules use native Oxlint rules.
 The import sorting plugin and two React rules (`no-deprecated` and
 `require-render-return`) run through Oxlint's JS plugin support.
 
+## Formatting
+
+Run `pnpm format:write` to format TypeScript, TSX, and MDX files with
+[Oxfmt](https://oxc.rs/docs/guide/usage/formatter). Run `pnpm format:check`
+to check formatting without changing files.
+
+Configuration and ignored paths live in `.oxfmtrc.json`, including Tailwind
+class sorting. The pre-commit hook also formats staged JavaScript files.
+
 ## Building for Production
 
 ```bash

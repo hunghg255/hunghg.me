@@ -141,6 +141,13 @@ prompt from `reference/prompts.md`, substituting the character description. Save
 
 **2. Draw the expressions sheet.** Use the EXPRESSIONS prompt, and pass the directions
 sheet you just made as a reference image. Save it to `characters/<name>/reactions.png`.
+Each of the nine expressions needs its own floating icon or compact icon cluster, as
+specified in the prompt. Randomly choose the upper-left or upper-right empty corner
+beside the top of the head for each cell, with a mix across the sheet. Keep the whole icon
+cluster in one corner, never top-centred. This choice is made when drawing and stays fixed
+in the exported sprite. Keep the character's scale and position fixed. Visually check all
+nine cells after building for readable, unclipped icons in the chosen corners with clear
+space from hair and cell edges; automated checks do not verify icon placement or meaning.
 
 **3. Build and verify.**
 

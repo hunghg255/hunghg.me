@@ -46,7 +46,6 @@ const HYSTERESIS = 0.12
 const DEAD_ZONE = 70
 
 const PAYOFFS: Reaction[] = ['heart', 'sparkle', 'delighted']
-const BOOP_PAYOFF = 120
 const BOOP_END = 560
 const SQUASH_MS = 420
 const DIZZY_AFTER = 4
@@ -170,8 +169,8 @@ export function CursorBuddy(props: CursorBuddyProps) {
       setReaction('dizzy')
       later(DIZZY_END, null)
     } else {
-      setReaction('blink')
-      later(BOOP_PAYOFF, PAYOFFS[(boops.count - 1) % PAYOFFS.length])
+      // Hold one expression per click; every reaction cell has its own icon.
+      setReaction(PAYOFFS[(boops.count - 1) % PAYOFFS.length])
       later(BOOP_END, null)
     }
 

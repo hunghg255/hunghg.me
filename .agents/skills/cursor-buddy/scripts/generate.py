@@ -83,16 +83,31 @@ THE RULE THAT MATTERS MOST: draw the BODY ONCE and reuse it. The neck, chest and
 
 MARGINS -- this is what goes wrong most often, so follow it literally: each character must sit ENTIRELY INSIDE its own cell with a wide empty gap on all four sides. Draw it at roughly 75% of the cell height, centred, leaving clear empty space above the head AND below the shoulders. The shoulders must STOP WELL SHORT of the bottom edge of the cell -- do not let the body run off the bottom or bleed into the cell underneath. Nothing may touch or cross a cell boundary. Shrink the character equally in every cell if that is what it takes."""
 
-EXPRESSIONS = """1. Eyes closed as two upward curved arcs. No symbol.
-2. Same closed arc eyes, plus one clearly visible SMALL RED HEART floating in the empty space above the head. The heart must be present.
-3. Same closed arc eyes, plus THREE SMALL YELLOW SPARKLE STARS above the head.
-4. Eyes wide open and very round, mouth open in a small round O of surprise.
-5. Starstruck: both eyes drawn as bright star shapes, big happy smile.
-6. Eyes closed arcs, strong pink blush on both cheeks.
-7. Eyes closed sleeping curves, plus a small blue "z z z" above the head.
-8. Both eyes drawn as spiral swirls, wavy wobbly mouth. Dizzy.
-9. Eyes closed arcs, mouth wide open in a big happy grin."""
+EXPRESSIONS = """1. Eyes closed as two upward curved arcs, gentle smile, plus ONE SMALL GOLDEN SUN in the chosen upper corner.
+2. Same closed arc eyes, plus ONE SMALL RED HEART in the chosen upper corner.
+3. Same closed arc eyes, plus THREE SMALL YELLOW SPARKLE STARS in the chosen upper corner.
+4. Eyes wide open and very round, mouth open in a small round O of surprise, plus ONE ORANGE EXCLAMATION MARK in the chosen upper corner.
+5. Starstruck: both eyes drawn as bright star shapes, big happy smile, plus ONE SMALL GOLDEN SHOOTING STAR with a short tail in the chosen upper corner. Star-shaped eyes alone do not count as the icon.
+6. Eyes closed arcs, strong pink blush on both cheeks, plus ONE SMALL PINK FLOWER in the chosen upper corner.
+7. Eyes closed sleeping curves, plus a small blue "z z z" in the chosen upper corner.
+8. Both eyes drawn as spiral swirls, wavy wobbly mouth, plus ONE SMALL PURPLE SPIRAL in the chosen upper corner. Spiral eyes alone do not count as the icon.
+9. Eyes closed arcs, mouth wide open in a big happy grin, plus ONE SMALL PARTY POPPER with a compact spray of confetti in the chosen upper corner."""
 
+
+REACTION_ICONS = """ICONS: Every cell must include its assigned icon, drawn in the same art style and palette
+as the character, not a pasted platform emoji. Keep each icon or cluster compact, clearly
+separate from the hair and readable at small display sizes. For EACH cell, randomly choose
+ONE of two positions: the UPPER-LEFT or UPPER-RIGHT empty corner beside the top of the head,
+as seen by the viewer. Use a varied mix of left and right placements across the sheet.
+Place the entire icon cluster in that one corner; never split it across both corners or
+place it in the top centre. Use the space beside the upper hair silhouette to save height,
+keeping a clear gap from the hair and a wide inset from cell edges. Choose the corner once
+when generating the artwork; its position stays fixed in the exported sprite.
+Keep the head and shoulders at their reference
+size and position; do not shrink or move the character to fit icons. No stray marks or
+fragments from neighbouring cells. For restricted-colour styles, use the style palette
+instead of the icon colours named above, preserving each icon's distinctive shape."""
+REACTION_TAIL = TAIL.replace('No text,', 'No text except the surprise exclamation mark and sleep "z z z" icons,')
 
 def directions_prompt(describe, style):
     return f"""Generate a 3x3 grid sprite sheet of {describe}. {STYLES[style]}
@@ -126,7 +141,7 @@ simplify or redraw it.
 
 NOT head directions. The character faces STRAIGHT AT THE VIEWER in all nine cells, head
 perfectly straight. The only thing that changes between cells is the FACE, plus one small
-floating symbol in three of them.
+floating icon or compact icon cluster in EVERY cell.
 
 CRITICAL: same character, same art style, same palette, same line weight, same proportions,
 and EXACTLY THE SAME SIZE AND POSITION IN THE CELL as the attached sheet. The chest and
@@ -140,7 +155,9 @@ and clear empty space below the shoulders.
 The nine expressions, left to right, top to bottom:
 {EXPRESSIONS}
 
-{TAIL}"""
+{REACTION_ICONS}
+
+{REACTION_TAIL}"""
 
 
 def reference_prompt(describe, style):
