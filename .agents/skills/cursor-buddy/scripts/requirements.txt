@@ -1,0 +1,4 @@
+pillow>=10
+numpy>=1.24
+scipy>=1.11
+openai>=1.40

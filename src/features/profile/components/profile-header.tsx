@@ -3,6 +3,7 @@ import { USER } from "@/data/user";
 import { cn } from "@/lib/utils";
 import { FlipSentences } from "@/registry/flip-sentences";
 
+import { ProfileCursorBuddy } from "./profile-cursor-buddy";
 import { VerifiedIcon } from "./verified-icon";
 
 export function ProfileHeader() {
@@ -10,13 +11,13 @@ export function ProfileHeader() {
     <div className="screen-line-after flex border-x border-edge">
       <div className="shrink-0 border-r border-edge">
         <div className="mx-[2px] my-[3px]">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
+          {/* <img
             className="size-32 rounded-full ring-1 ring-border ring-offset-2 ring-offset-background select-none sm:size-40"
             alt={`${USER.displayName}'s avatar`}
             src={USER.avatar}
             fetchPriority="high"
-          />
+          /> */}
+          <ProfileCursorBuddy />
         </div>
 
         {/* Flag of Viet Nam */}
