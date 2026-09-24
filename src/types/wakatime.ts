@@ -61,8 +61,35 @@ export interface WakatimeRange {
   text: string;
 }
 
+export interface WakatimeAiModelBreakdown {
+  /** AI model name */
+  name: string;
+  /** number of lines added or removed by this AI model */
+  lines: number;
+  /** estimated USD cost for this AI model */
+  cost: number;
+}
+
+/** AI fields returned by the stats endpoint (null when not tracked) */
+export interface WakatimeAiStats {
+  ai_additions?: number | null;
+  ai_deletions?: number | null;
+  human_additions?: number | null;
+  human_deletions?: number | null;
+  ai_line_changes_total?: number | null;
+  ai_model_breakdown?: WakatimeAiModelBreakdown[] | null;
+  ai_model_total_cost?: number | null;
+  ai_input_tokens?: number | null;
+  ai_cached_input_tokens?: number | null;
+  ai_output_tokens?: number | null;
+  ai_prompt_length_avg?: number | null;
+  ai_prompt_events_total?: number | null;
+  ai_prompt_events_avg_per_session?: number | null;
+  ai_sessions?: number | null;
+}
+
 export interface WakatimeStatsResponse {
-  data: {
+  data: WakatimeAiStats & {
     total_seconds: number;
     human_readable_total: string;
     daily_average: number;

@@ -6,6 +6,7 @@ import { Panel, PanelContent } from "@/features/profile/components/panel";
 import type { WakatimeStatsData } from "@/types/wakatime";
 import { isWakatimeError } from "@/types/wakatime";
 
+import { AiStatsStatic } from "./ai-stats-static";
 import { CodingChartsStatic } from "./coding-charts-static";
 import { RangeSelector } from "./range-selector";
 import { StatsOverviewStatic } from "./stats-overview-static";
@@ -50,6 +51,21 @@ export function StatsServerContent({ data }: StatsServerContentProps) {
             <div className="py-8 text-center">
               <p className="text-muted-foreground">
                 No data available for this time range
+              </p>
+            </div>
+          )}
+        </PanelContent>
+      </Panel>
+
+      {/* AI Coding */}
+      <Panel id="ai-coding" className="scroll-mt-22">
+        <PanelContent>
+          {hasValidData ? (
+            <AiStatsStatic stats={currentStats} />
+          ) : (
+            <div className="py-8 text-center">
+              <p className="text-muted-foreground">
+                No AI data available for this time range
               </p>
             </div>
           )}
