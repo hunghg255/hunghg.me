@@ -43,7 +43,10 @@ function ProgressBar({ items, title, icon }: ProgressBarProps) {
               </span>
             </div>
             <div className="h-2 overflow-hidden rounded-full bg-muted">
-              <div className={cn("h-full rounded-full", item.color)} />
+              <div
+                className={cn("h-full rounded-full", item.color)}
+                style={{ width: `${item.percent}%` }}
+              />
             </div>
           </div>
         ))}
