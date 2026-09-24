@@ -64,8 +64,8 @@ export const EXPERIENCES: Experience[] = [
   {
     id: "open-source",
     companyName: "Github",
-    companyLogo:
-      "https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg",
+    companyLogo: "/images/social/github-mark.svg",
+    companyLogoDark: "/images/social/github-mark-dark.svg",
     positions: [
       {
         id: "f0becfba-057d-40db-b252-739e1654faa1",
