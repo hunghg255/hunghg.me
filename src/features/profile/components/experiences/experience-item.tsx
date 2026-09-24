@@ -1,6 +1,8 @@
 import Image from "next/image";
 import React from "react";
 
+import { cn } from "@/lib/utils";
+
 import type { Experience } from "../../types/experiences";
 import { ExperiencePositionItem } from "./experience-position-item";
 
@@ -10,16 +12,33 @@ export function ExperienceItem({ experience }: { experience: Experience }) {
       <div className="flex items-center gap-3">
         <div className="flex size-6 shrink-0 items-center justify-center">
           {experience.companyLogo ? (
-            <Image
-              src={experience.companyLogo}
-              alt={experience.companyName}
-              width={24}
-              height={24}
-              quality={100}
-              className="rounded-full"
-              unoptimized
-              aria-hidden
-            />
+            <>
+              <Image
+                src={experience.companyLogo}
+                alt={experience.companyName}
+                width={24}
+                height={24}
+                quality={100}
+                className={cn(
+                  "rounded-full",
+                  experience.companyLogoDark && "dark:hidden"
+                )}
+                unoptimized
+                aria-hidden
+              />
+              {experience.companyLogoDark && (
+                <Image
+                  src={experience.companyLogoDark}
+                  alt={experience.companyName}
+                  width={24}
+                  height={24}
+                  quality={100}
+                  className="hidden rounded-full dark:block"
+                  unoptimized
+                  aria-hidden
+                />
+              )}
+            </>
           ) : (
             <span className="flex size-2 rounded-full bg-zinc-300 dark:bg-zinc-600" />
           )}

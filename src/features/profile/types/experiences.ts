@@ -23,6 +23,8 @@ export type Experience = {
   id: string;
   companyName: string;
   companyLogo?: string;
+  /** Optional logo used in dark theme */
+  companyLogoDark?: string;
   positions: ExperiencePosition[];
   isCurrentEmployer?: boolean;
 };

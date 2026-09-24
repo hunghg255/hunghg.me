@@ -4,7 +4,13 @@ import Image from "next/image";
 import type { SocialLink } from "@/features/profile/types/social-links";
 import { cn } from "@/lib/utils";
 
-export function SocialLinkItem({ icon, title, description, href }: SocialLink) {
+export function SocialLinkItem({
+  icon,
+  iconDark,
+  title,
+  description,
+  href,
+}: SocialLink) {
   return (
     <a
       className={cn(
@@ -18,7 +24,7 @@ export function SocialLinkItem({ icon, title, description, href }: SocialLink) {
     >
       <div className="relative size-12 shrink-0">
         <Image
-          className="rounded-xl"
+          className={cn("rounded-xl", iconDark && "dark:hidden")}
           src={icon}
           alt={title}
           width={48}
@@ -26,6 +32,17 @@ export function SocialLinkItem({ icon, title, description, href }: SocialLink) {
           quality={100}
           unoptimized
         />
+        {iconDark && (
+          <Image
+            className="hidden rounded-xl dark:block"
+            src={iconDark}
+            alt={title}
+            width={48}
+            height={48}
+            quality={100}
+            unoptimized
+          />
+        )}
         <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-black/8 ring-inset dark:ring-white/8" />
       </div>
 

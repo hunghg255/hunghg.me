@@ -47,6 +47,7 @@ type CommandLinkItem = {
 
   icon?: React.ComponentType<LucideProps>;
   iconImage?: string;
+  iconImageDark?: string;
   keywords?: string[];
   openInNewTab?: boolean;
 };
@@ -111,6 +112,7 @@ const SOCIAL_LINK_ITEMS: CommandLinkItem[] = SOCIAL_LINKS.map((item) => ({
   title: item.title,
   href: item.href,
   iconImage: item.icon,
+  iconImageDark: item.iconDark,
   openInNewTab: true,
 }));
 
@@ -367,14 +369,29 @@ function CommandLinkGroup({
             onSelect={() => onLinkSelect(link.href, link.openInNewTab)}
           >
             {link?.iconImage ? (
-              <Image
-                className="rounded-sm"
-                src={link.iconImage}
-                alt={link.title}
-                width={16}
-                height={16}
-                unoptimized
-              />
+              <>
+                <Image
+                  className={cn(
+                    "rounded-sm",
+                    link.iconImageDark && "dark:hidden"
+                  )}
+                  src={link.iconImage}
+                  alt={link.title}
+                  width={16}
+                  height={16}
+                  unoptimized
+                />
+                {link.iconImageDark && (
+                  <Image
+                    className="hidden rounded-sm dark:block"
+                    src={link.iconImageDark}
+                    alt={link.title}
+                    width={16}
+                    height={16}
+                    unoptimized
+                  />
+                )}
+              </>
             ) : (
               <Icon />
             )}
