@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server";
 
+import { getWakatimeCached } from "@/features/wakatime/lib/wakatime-api";
+
 interface WakatimeAllTimeResponse {
   data: {
     daily_average: number;
@@ -24,32 +26,14 @@ interface WakatimeAllTimeResponse {
 
 export async function GET() {
   try {
-    const apiKey = process.env.WAKATIME_API_KEY;
-    if (!apiKey) {
-      return NextResponse.json(
-        { error: "Wakatime API key not configured" },
-        { status: 500 }
+    const { data, fetchedAt } =
+      await getWakatimeCached<WakatimeAllTimeResponse>(
+        "/users/current/all_time_since_today"
       );
-    }
 
-    const response = await fetch(
-      "https://api.wakatime.com/api/v1/users/current/all_time_since_today",
-      {
-        headers: {
-          Authorization: `Basic ${Buffer.from(apiKey).toString("base64")}`,
-        },
-        next: { revalidate: 86400 }, // Cache for 1 hour
-      }
-    );
-
-    if (!response.ok) {
-      throw new Error("Failed to fetch Wakatime all-time stats");
-    }
-
-    const data: WakatimeAllTimeResponse = await response.json();
     return NextResponse.json({
       data,
-      lastUpdated: new Date().toISOString(),
+      lastUpdated: fetchedAt,
     });
   } catch (error) {
     console.error("Error fetching Wakatime all-time stats:", error);
