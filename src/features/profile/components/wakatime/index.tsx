@@ -58,29 +58,16 @@ const REVALIDATE_DELAY_MS = 5_000;
 // Don't ask again sooner than this from the same tab
 const REVALIDATE_MIN_INTERVAL_MS = 60_000;
 
-async function fetchWakatimeData(): Promise<WakatimeStatsData> {
-  const getJson = (url: string) =>
-    fetch(url, { cache: "no-store" }).then((res) => res.json());
+async function fetchWakatimeData(fresh?: boolean): Promise<WakatimeStatsData> {
+  // A unique query skips the CDN copy right after the server cache was cleared
+  const url = fresh ? `/api/wakatime?v=${Date.now()}` : "/api/wakatime";
+  const res = await fetch(url);
 
-  const [allTime, ...stats] = await Promise.all([
-    getJson("/api/wakatime-all-time"),
-    ...RANGES.map((range) => getJson(`/api/wakatime-stats?range=${range}`)),
-  ]);
+  if (!res.ok) {
+    throw new Error(`Failed to fetch Wakatime data: ${res.status}`);
+  }
 
-  const fetchedAt = [
-    allTime?.lastUpdated,
-    ...stats.map((item) => item?.fetchedAt),
-  ].filter(Boolean) as string[];
-
-  return {
-    stats: Object.fromEntries(
-      RANGES.map((range, index) => [range, stats[index]])
-    ) as WakatimeStatsData["stats"],
-    // Route wraps the WakaTime response as { data, lastUpdated }
-    allTimeData: allTime?.data ?? allTime,
-    // Oldest fetch time, so the label never overstates freshness
-    lastUpdated: fetchedAt.sort()[0] ?? new Date().toISOString(),
-  };
+  return res.json();
 }
 
 export default function Wakatime() {
@@ -92,9 +79,9 @@ export default function Wakatime() {
     let timer: ReturnType<typeof setTimeout> | undefined;
     let lastRevalidateAt = 0;
 
-    const load = async () => {
+    const load = async (fresh?: boolean) => {
       try {
-        const next = await fetchWakatimeData();
+        const next = await fetchWakatimeData(fresh);
         if (!cancelled) setData(next);
       } catch (error) {
         console.error("Failed to fetch Wakatime data:", error);
@@ -113,7 +100,7 @@ export default function Wakatime() {
           method: "POST",
         });
         const { revalidated } = await res.json();
-        if (revalidated) await load();
+        if (revalidated) await load(true);
       } catch (error) {
         console.error("Failed to revalidate Wakatime data:", error);
       } finally {
