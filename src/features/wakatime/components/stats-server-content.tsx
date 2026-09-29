@@ -13,9 +13,18 @@ import { StatsOverviewStatic } from "./stats-overview-static";
 
 interface StatsServerContentProps {
   data: WakatimeStatsData;
+  isRevalidating?: boolean;
 }
 
-export function StatsServerContent({ data }: StatsServerContentProps) {
+const lastUpdatedFormat = new Intl.DateTimeFormat("en-US", {
+  dateStyle: "medium",
+  timeStyle: "short",
+});
+
+export function StatsServerContent({
+  data,
+  isRevalidating,
+}: StatsServerContentProps) {
   const [selectedRange, setSelectedRange] = useState("last_7_days");
 
   const currentStats = data.stats[selectedRange as keyof typeof data.stats];
@@ -33,7 +42,11 @@ export function StatsServerContent({ data }: StatsServerContentProps) {
             <RangeSelector value={selectedRange} onChange={setSelectedRange} />
           </div>
           <p className="font-mono text-sm text-muted-foreground">
-            Last updated: {data?.lastUpdated}
+            Last updated:{" "}
+            <time dateTime={data.lastUpdated}>
+              {lastUpdatedFormat.format(new Date(data.lastUpdated))}
+            </time>
+            {isRevalidating && " · Refreshing…"}
           </p>
         </PanelContent>
       </Panel>

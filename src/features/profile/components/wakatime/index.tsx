@@ -45,80 +45,106 @@ function StatsLoadingSkeleton() {
   );
 }
 
+const RANGES = [
+  "last_7_days",
+  "last_30_days",
+  "last_6_months",
+  "last_year",
+  "all_time",
+] as const;
+
+// Revalidate this long after the page becomes active (opened or tab refocused)
+const REVALIDATE_DELAY_MS = 5_000;
+// Don't ask again sooner than this from the same tab
+const REVALIDATE_MIN_INTERVAL_MS = 60_000;
+
+async function fetchWakatimeData(): Promise<WakatimeStatsData> {
+  const getJson = (url: string) =>
+    fetch(url, { cache: "no-store" }).then((res) => res.json());
+
+  const [allTime, ...stats] = await Promise.all([
+    getJson("/api/wakatime-all-time"),
+    ...RANGES.map((range) => getJson(`/api/wakatime-stats?range=${range}`)),
+  ]);
+
+  const fetchedAt = [
+    allTime?.lastUpdated,
+    ...stats.map((item) => item?.fetchedAt),
+  ].filter(Boolean) as string[];
+
+  return {
+    stats: Object.fromEntries(
+      RANGES.map((range, index) => [range, stats[index]])
+    ) as WakatimeStatsData["stats"],
+    // Route wraps the WakaTime response as { data, lastUpdated }
+    allTimeData: allTime?.data ?? allTime,
+    // Oldest fetch time, so the label never overstates freshness
+    lastUpdated: fetchedAt.sort()[0] ?? new Date().toISOString(),
+  };
+}
+
 export default function Wakatime() {
   const [data, setData] = useState<WakatimeStatsData>();
+  const [isRevalidating, setIsRevalidating] = useState(false);
 
   useEffect(() => {
-    const init = async () => {
-      const baseUrl =
-        process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
-      try {
-        // Fetch all time ranges in parallel
-        const [
-          last7Days,
-          last30Days,
-          last6Months,
-          lastYear,
-          allTime,
-          allTimeData,
-        ] = await Promise.all([
-          fetch(`${baseUrl}/api/wakatime-stats?range=last_7_days`, {
-            next: { revalidate: 86400 },
-          }).then((res) => res.json()),
-          fetch(`${baseUrl}/api/wakatime-stats?range=last_30_days`, {
-            next: { revalidate: 86400 },
-          }).then((res) => res.json()),
-          fetch(`${baseUrl}/api/wakatime-stats?range=last_6_months`, {
-            next: { revalidate: 86400 },
-          }).then((res) => res.json()),
-          fetch(`${baseUrl}/api/wakatime-stats?range=last_year`, {
-            next: { revalidate: 86400 },
-          }).then((res) => res.json()),
-          fetch(`${baseUrl}/api/wakatime-stats?range=all_time`, {
-            next: { revalidate: 86400 },
-          }).then((res) => res.json()),
-          fetch(`${baseUrl}/api/wakatime-all-time`, {
-            next: { revalidate: 86400 },
-          }).then((res) => res.json()),
-        ]);
+    let cancelled = false;
+    let timer: ReturnType<typeof setTimeout> | undefined;
+    let lastRevalidateAt = 0;
 
-        setData({
-          stats: {
-            last_7_days: last7Days,
-            last_30_days: last30Days,
-            last_6_months: last6Months,
-            last_year: lastYear,
-            all_time: allTime,
-          },
-          allTimeData: allTimeData?.data,
-          lastUpdated: allTimeData?.lastUpdated,
-        });
+    const load = async () => {
+      try {
+        const next = await fetchWakatimeData();
+        if (!cancelled) setData(next);
       } catch (error) {
         console.error("Failed to fetch Wakatime data:", error);
-        // Return empty data structure for graceful fallback
-        const errorResponse = { error: "Failed to fetch" };
-
-        return {
-          stats: {
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            last_7_days: errorResponse as any,
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            last_30_days: errorResponse as any,
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            last_6_months: errorResponse as any,
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            last_year: errorResponse as any,
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            all_time: errorResponse as any,
-          },
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          allTimeData: errorResponse as any,
-          lastUpdated: new Date().toISOString(),
-        };
+        if (!cancelled) {
+          // Keep showing what we have; only fall back when there is nothing yet
+          setData((prev) => prev ?? createErrorData());
+        }
       }
     };
 
-    init();
+    const revalidate = async () => {
+      lastRevalidateAt = Date.now();
+      setIsRevalidating(true);
+      try {
+        const res = await fetch("/api/wakatime-revalidate", {
+          method: "POST",
+        });
+        const { revalidated } = await res.json();
+        if (revalidated) await load();
+      } catch (error) {
+        console.error("Failed to revalidate Wakatime data:", error);
+      } finally {
+        if (!cancelled) setIsRevalidating(false);
+      }
+    };
+
+    const scheduleRevalidate = () => {
+      clearTimeout(timer);
+      if (document.visibilityState !== "visible") return;
+      if (Date.now() - lastRevalidateAt < REVALIDATE_MIN_INTERVAL_MS) return;
+      timer = setTimeout(revalidate, REVALIDATE_DELAY_MS);
+    };
+
+    const onVisibilityChange = () => {
+      if (document.visibilityState === "visible") {
+        scheduleRevalidate();
+      } else {
+        clearTimeout(timer);
+      }
+    };
+
+    load();
+    scheduleRevalidate();
+    document.addEventListener("visibilitychange", onVisibilityChange);
+
+    return () => {
+      cancelled = true;
+      clearTimeout(timer);
+      document.removeEventListener("visibilitychange", onVisibilityChange);
+    };
   }, []);
 
   if (!data) {
@@ -142,7 +168,19 @@ export default function Wakatime() {
         </PanelContent>
       </Panel>
 
-      <StatsServerContent data={data} />
+      <StatsServerContent data={data} isRevalidating={isRevalidating} />
     </Panel>
   );
+}
+
+function createErrorData(): WakatimeStatsData {
+  const error = { error: "Failed to fetch" };
+
+  return {
+    stats: Object.fromEntries(
+      RANGES.map((range) => [range, error])
+    ) as WakatimeStatsData["stats"],
+    allTimeData: error,
+    lastUpdated: new Date().toISOString(),
+  };
 }
