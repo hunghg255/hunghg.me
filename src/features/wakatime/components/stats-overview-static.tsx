@@ -65,21 +65,23 @@ export function StatsOverviewStatic({
   ];
 
   return (
-    <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+    <div className="grid grid-cols-2 gap-3 sm:gap-4">
       {statCards.map((stat, index) => (
         <div
           key={index}
-          className="rounded-lg border border-edge bg-background p-4 transition-colors hover:border-foreground/20"
+          className="rounded-lg border border-edge bg-background p-3 transition-colors hover:border-foreground/20 sm:p-4"
         >
-          <div className="flex items-center gap-3">
-            <div className={cn("rounded-lg bg-muted p-2", stat.color)}>
+          <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-3">
+            <div className={cn("w-fit rounded-lg bg-muted p-2", stat.color)}>
               <stat.icon className="size-4" />
             </div>
-            <div className="flex-1">
-              <p className="font-mono text-sm text-muted-foreground">
+            <div className="min-w-0 flex-1">
+              <p className="font-mono text-xs text-muted-foreground sm:text-sm">
                 {stat.label}
               </p>
-              <p className="font-mono text-lg font-semibold">{stat.value}</p>
+              <p className="font-mono text-sm font-semibold min-[400px]:text-base sm:text-lg">
+                {stat.value}
+              </p>
             </div>
           </div>
         </div>

@@ -35,13 +35,15 @@ export function StatsServerContent({
       {/* Range Selector */}
       <Panel id="range-selector" className="scroll-mt-22">
         <PanelContent>
-          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-            <p className="font-mono text-sm text-muted-foreground">
-              Select a time period to view your coding statistics
-            </p>
-            <RangeSelector value={selectedRange} onChange={setSelectedRange} />
-          </div>
           <p className="font-mono text-sm text-muted-foreground">
+            Select a time period to view your coding statistics
+          </p>
+          <RangeSelector
+            className="mt-3"
+            value={selectedRange}
+            onChange={setSelectedRange}
+          />
+          <p className="mt-3 font-mono text-xs text-muted-foreground sm:text-sm">
             Last updated:{" "}
             <time dateTime={data.lastUpdated}>
               {lastUpdatedFormat.format(new Date(data.lastUpdated))}

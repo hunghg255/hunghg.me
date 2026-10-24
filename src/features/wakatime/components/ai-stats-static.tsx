@@ -188,7 +188,7 @@ export function AiStatsStatic({ stats }: AiStatsStaticProps) {
               <tile.icon className="size-4" />
               <p className="font-mono text-xs sm:text-sm">{tile.label}</p>
             </div>
-            <p className="mt-2 font-mono text-base font-semibold sm:text-lg">
+            <p className="mt-2 font-mono text-sm font-semibold min-[400px]:text-base sm:text-lg">
               {tile.value}
             </p>
             {tile.detail && (

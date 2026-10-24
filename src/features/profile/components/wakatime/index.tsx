@@ -16,7 +16,7 @@ function StatsLoadingSkeleton() {
           <PanelTitle>Overview</PanelTitle>
         </PanelHeader>
         <PanelContent>
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+          <div className="grid grid-cols-2 gap-3 sm:gap-4">
             {Array.from({ length: 4 }).map((_, i) => (
               <div key={i} className="animate-pulse">
                 <div className="h-24 rounded-lg border border-edge bg-muted"></div>
@@ -32,7 +32,7 @@ function StatsLoadingSkeleton() {
           <PanelTitle>Activity Breakdown</PanelTitle>
         </PanelHeader>
         <PanelContent>
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,15rem),1fr))] gap-4 sm:gap-6 [&>:last-child:nth-child(odd)]:col-span-full">
             {Array.from({ length: 3 }).map((_, i) => (
               <div key={i} className="animate-pulse">
                 <div className="h-48 rounded-lg border border-edge bg-muted"></div>

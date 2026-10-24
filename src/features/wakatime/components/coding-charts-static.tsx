@@ -34,11 +34,14 @@ function ProgressBar({ items, title, icon }: ProgressBarProps) {
       <div className="space-y-3">
         {topItems.map((item, index) => (
           <div key={index} className="space-y-1">
-            <div className="flex justify-between gap-1 text-sm">
-              <span className="font-mono text-muted-foreground">
+            <div className="flex justify-between gap-3 text-sm">
+              <span
+                className="min-w-0 truncate font-mono text-muted-foreground"
+                title={item.name}
+              >
                 {item.name}
               </span>
-              <span className="text-left font-mono font-semibold">
+              <span className="shrink-0 font-mono font-semibold">
                 {item.text}
               </span>
             </div>
@@ -110,7 +113,7 @@ export function CodingChartsStatic({ stats }: CodingChartsStaticProps) {
   }));
 
   return (
-    <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+    <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,15rem),1fr))] gap-4 sm:gap-6 [&>:last-child:nth-child(odd)]:col-span-full">
       <ProgressBar
         items={languagesWithColors}
         title="Languages"

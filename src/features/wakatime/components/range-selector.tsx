@@ -9,11 +9,11 @@ interface RangeSelectorProps {
 }
 
 const ranges = [
-  { value: "last_7_days", label: "7 Days" },
-  { value: "last_30_days", label: "30 Days" },
-  { value: "last_6_months", label: "6 Months" },
-  { value: "last_year", label: "Year" },
-  { value: "all_time", label: "All Time" },
+  { value: "last_7_days", label: "7 Days", shortLabel: "7D" },
+  { value: "last_30_days", label: "30 Days", shortLabel: "30D" },
+  { value: "last_6_months", label: "6 Months", shortLabel: "6M" },
+  { value: "last_year", label: "Year", shortLabel: "1Y" },
+  { value: "all_time", label: "All Time", shortLabel: "All" },
 ];
 
 export function RangeSelector({
@@ -22,26 +22,32 @@ export function RangeSelector({
   className,
 }: RangeSelectorProps) {
   return (
-    <div className={cn("flex flex-wrap gap-2", className)}>
+    <div
+      role="group"
+      aria-label="Time range"
+      className={cn(
+        "grid grid-cols-5 gap-1 rounded-lg border border-edge p-1 sm:inline-grid",
+        className
+      )}
+    >
       {ranges.map((range) => {
         const isActive = value === range.value;
 
         return (
           <button
             key={range.value}
+            type="button"
+            aria-pressed={isActive}
             onClick={() => onChange(range.value)}
             className={cn(
-              "relative rounded-md border px-3 py-1.5 font-mono text-sm transition-colors",
+              "min-h-10 rounded-md px-1 font-mono text-xs whitespace-nowrap transition-colors sm:px-3 sm:text-sm",
               isActive
-                ? "border-foreground bg-foreground text-background"
-                : "border-edge bg-background text-foreground hover:border-foreground/40"
+                ? "bg-foreground text-background"
+                : "text-muted-foreground hover:bg-accent hover:text-foreground"
             )}
           >
-            {range.label}
-
-            {isActive && (
-              <div className="absolute inset-0 -z-10 rounded-md bg-foreground" />
-            )}
+            <span className="min-[420px]:hidden">{range.shortLabel}</span>
+            <span className="max-[420px]:hidden">{range.label}</span>
           </button>
         );
       })}
