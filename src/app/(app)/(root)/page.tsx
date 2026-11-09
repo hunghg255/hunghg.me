@@ -1,3 +1,5 @@
+import { Swarm } from "agent-swarm-effect";
+
 import { GitHubSponsors } from "@/components/github-sponsors";
 import { About } from "@/features/profile/components/about";
 import { Certifications } from "@/features/profile/components/certifications";
@@ -21,7 +23,12 @@ export default function Page() {
         }}
       /> */}
 
-      <div className="mx-auto md:max-w-3xl">
+      <Swarm
+        className="mx-auto md:max-w-3xl"
+        selector=":scope > :not([data-separator])"
+        trigger="mount"
+        speed={1.3}
+      >
         <ProfileCover />
         <ProfileHeader />
         <Separator />
@@ -64,7 +71,7 @@ export default function Page() {
 
         <Brand />
         <Separator /> */}
-      </div>
+      </Swarm>
     </>
   );
 }
@@ -87,6 +94,7 @@ export default function Page() {
 function Separator({ className }: { className?: string }) {
   return (
     <div
+      data-separator
       className={cn(
         "relative flex h-8 w-full border-x border-edge",
         "before:absolute before:-left-[100vw] before:-z-1 before:h-8 before:w-[200vw]",
